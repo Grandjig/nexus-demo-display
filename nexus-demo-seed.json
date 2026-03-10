@@ -1,0 +1,518 @@
+{
+  "metadata": {
+    "generated_at": "2026-03-10T00:50:00Z",
+    "demo_type": "Nigerian Fintech Fraud Detection",
+    "currency": "NGN",
+    "timezone": "Africa/Lagos",
+    "transaction_count": 150,
+    "fraud_detection_rate": "94%"
+  },
+  "sample_transactions": [
+    {
+      "id": "TXN-2026-0001",
+      "timestamp": "2026-03-09T14:32:15Z",
+      "type": "TRANSFER",
+      "status": "BLOCKED",
+      "amount": 1250000,
+      "currency": "NGN",
+      "customer": {
+        "id": "CUST-98234",
+        "name": "Chidi Okonkwo",
+        "email": "chidi.okonkwo@email.com",
+        "phone": "+2348034567890",
+        "account_age_days": 156,
+        "daily_limit": 500000
+      },
+      "fraud_signals": [
+        "SIM_SWAP_DETECTED",
+        "VELOCITY_ATTACK",
+        "UNUSUAL_LOCATION"
+      ],
+      "fraud_score": 98,
+      "reason": "SIM card changed from Lagos to Kano 2 hours ago. 5 transfer attempts in 3 minutes.",
+      "device": {
+        "device_id": "DEV-abc123def456",
+        "device_fingerprint": "CHANGED",
+        "previous_device": "iPhone 12 Pro",
+        "current_device": "Unknown Android"
+      },
+      "location": {
+        "previous": "VI, Lagos (6.4321°N, 3.4567°W)",
+        "current": "Sabon Gari, Kano (11.9816°N, 8.6753°E)",
+        "distance_km": 820,
+        "time_to_travel_hours": 11
+      },
+      "beneficiary": {
+        "account": "1234567890",
+        "bank": "GTBank",
+        "name": "Unknown Account"
+      },
+      "detection_time_ms": 47
+    },
+    {
+      "id": "TXN-2026-0002",
+      "timestamp": "2026-03-09T15:08:42Z",
+      "type": "CARD_PURCHASE",
+      "status": "FLAGGED",
+      "amount": 89500,
+      "currency": "NGN",
+      "customer": {
+        "id": "CUST-45123",
+        "name": "Blessing Adeyemi",
+        "email": "blessing.adeyemi@email.com",
+        "phone": "+2347063456789",
+        "account_age_days": 89,
+        "daily_limit": 250000
+      },
+      "fraud_signals": [
+        "SYNTHETIC_IDENTITY",
+        "FAKE_NAME_VARIATIONS",
+        "MULTIPLE_ACCOUNTS_SAME_PHONE"
+      ],
+      "fraud_score": 87,
+      "reason": "Phone number associated with 12 other accounts with similar fraud patterns.",
+      "merchant": {
+        "name": "Best Electronics Store",
+        "category": "ELECTRONICS",
+        "location": "Ikeja, Lagos",
+        "risk_level": "MEDIUM"
+      },
+      "card_details": {
+        "card_last_4": "5678",
+        "card_type": "DEBIT",
+        "issuer": "FirstBank"
+      },
+      "detection_time_ms": 34
+    },
+    {
+      "id": "TXN-2026-0003",
+      "timestamp": "2026-03-09T15:45:28Z",
+      "type": "ACCOUNT_TRANSFER",
+      "status": "BLOCKED",
+      "amount": 850000,
+      "currency": "NGN",
+      "customer": {
+        "id": "CUST-78934",
+        "name": "Victoria Oluwaseun",
+        "email": "victoria.o@email.com",
+        "phone": "+2348123456789",
+        "account_age_days": 234,
+        "daily_limit": 1000000
+      },
+      "fraud_signals": [
+        "ACCOUNT_TAKEOVER",
+        "PASSWORD_RESET_WITHIN_1H",
+        "UNUSUAL_TIME_OF_DAY",
+        "NEW_BENEFICIARY"
+      ],
+      "fraud_score": 96,
+      "reason": "Password reset at 2:34 AM. Transfer to new beneficiary (never sent to before) at 3:45 AM.",
+      "device": {
+        "device_id": "DEV-xyz789uvw012",
+        "is_new": true,
+        "previous_login": "Web Browser (Chrome)",
+        "current_device": "Web Browser (Firefox)"
+      },
+      "behavior_baseline": {
+        "average_transaction_amount": 125000,
+        "average_transaction_time": "09:00-17:00",
+        "typical_beneficiaries": 3,
+        "typical_transfer_frequency": "2-3 per week"
+      },
+      "beneficiary": {
+        "account": "9876543210",
+        "bank": "Zenith Bank",
+        "name": "Success Ventures Ltd",
+        "is_new": true
+      },
+      "detection_time_ms": 52
+    },
+    {
+      "id": "TXN-2026-0004",
+      "timestamp": "2026-03-09T16:12:55Z",
+      "type": "MOBILE_TRANSFER",
+      "status": "APPROVED",
+      "amount": 25000,
+      "currency": "NGN",
+      "customer": {
+        "id": "CUST-56712",
+        "name": "Emeka Uzochukwu",
+        "email": "emeka.uzo@email.com",
+        "phone": "+2349087654321",
+        "account_age_days": 512,
+        "daily_limit": 500000
+      },
+      "fraud_signals": [],
+      "fraud_score": 2,
+      "reason": "Legitimate transfer within customer's normal behavior pattern.",
+      "device": {
+        "device_id": "DEV-mob-12345",
+        "device_type": "iPhone 13",
+        "os": "iOS",
+        "app_version": "2.4.1"
+      },
+      "behavior_baseline": {
+        "average_transaction_amount": 22500,
+        "average_transaction_time": "16:00-17:00",
+        "typical_beneficiaries": 5,
+        "typical_transfer_frequency": "Daily"
+      },
+      "beneficiary": {
+        "account": "5555666677778888",
+        "bank": "UBA",
+        "name": "Jide Olaoye",
+        "is_frequent": true
+      },
+      "detection_time_ms": 23
+    },
+    {
+      "id": "TXN-2026-0005",
+      "timestamp": "2026-03-09T16:34:09Z",
+      "type": "TRANSFER",
+      "status": "BLOCKED",
+      "amount": 2100000,
+      "currency": "NGN",
+      "customer": {
+        "id": "CUST-92847",
+        "name": "Amara Chioma",
+        "email": "amara.c@email.com",
+        "phone": "+2348012345678",
+        "account_age_days": 45,
+        "daily_limit": 100000
+      },
+      "fraud_signals": [
+        "EXCEEDS_DAILY_LIMIT",
+        "EXCEEDS_ACCOUNT_VELOCITY",
+        "FIRST_TIME_LARGE_AMOUNT"
+      ],
+      "fraud_score": 92,
+      "reason": "Transfer amount 21x daily limit. Account only 45 days old. First time transferring amount > 500k.",
+      "previous_activity": {
+        "highest_previous_transfer": 45000,
+        "total_transfers": 8,
+        "average_transfer": 22500
+      },
+      "beneficiary": {
+        "account": "1111222233334444",
+        "bank": "Access Bank",
+        "name": "Business Partners Corp"
+      },
+      "location": {
+        "ip_country": "Ghana",
+        "customer_country": "Nigeria"
+      },
+      "detection_time_ms": 41
+    },
+    {
+      "id": "TXN-2026-0006",
+      "timestamp": "2026-03-09T17:01:33Z",
+      "type": "CARD_WITHDRAWAL",
+      "status": "FLAGGED",
+      "amount": 500000,
+      "currency": "NGN",
+      "customer": {
+        "id": "CUST-34521",
+        "name": "Kofi Mensah",
+        "email": "kofi.m@email.com",
+        "phone": "+2347045678901",
+        "account_age_days": 178,
+        "daily_limit": 500000
+      },
+      "fraud_signals": [
+        "STRUCTURING_PATTERN",
+        "MULTIPLE_WITHDRAWALS",
+        "CASH_INTENSIVE"
+      ],
+      "fraud_score": 78,
+      "reason": "5 withdrawals of exactly 500k in 6 hours. Known structuring pattern to avoid detection.",
+      "withdrawal_pattern": {
+        "withdrawals_today": 5,
+        "total_amount_today": 2500000,
+        "average_withdrawal": 500000,
+        "time_between_withdrawals_min": 15
+      },
+      "atm": {
+        "location": "Lekki Phase 1, Lagos",
+        "type": "ATM",
+        "atm_id": "ATM-LK-001"
+      },
+      "detection_time_ms": 38
+    },
+    {
+      "id": "TXN-2026-0007",
+      "timestamp": "2026-03-09T17:28:56Z",
+      "type": "ONLINE_PURCHASE",
+      "status": "BLOCKED",
+      "amount": 145000,
+      "currency": "NGN",
+      "customer": {
+        "id": "CUST-11234",
+        "name": "Tunde Okafor",
+        "email": "tunde.ok@email.com",
+        "phone": "+2348098765432",
+        "account_age_days": 67,
+        "daily_limit": 200000
+      },
+      "fraud_signals": [
+        "CARD_NOT_PRESENT",
+        "MCC_MISMATCH",
+        "VELOCITY_SPIKE"
+      ],
+      "fraud_score": 85,
+      "reason": "Card not present transaction. Merchant category (cryptocurrency) not matching customer's typical purchases.",
+      "merchant": {
+        "name": "Crypto Exchange Platform",
+        "category": "CRYPTOCURRENCY",
+        "country": "Singapore",
+        "mcc_code": "6211"
+      },
+      "card_history": {
+        "card_type": "CREDIT",
+        "previous_international_tx": 0,
+        "typical_merchants": ["Jumia", "Konga", "Supermarket"]
+      },
+      "detection_time_ms": 55
+    },
+    {
+      "id": "TXN-2026-0008",
+      "timestamp": "2026-03-09T18:15:22Z",
+      "type": "TRANSFER",
+      "status": "APPROVED",
+      "amount": 350000,
+      "currency": "NGN",
+      "customer": {
+        "id": "CUST-78523",
+        "name": "Iya Omotayo",
+        "email": "iya.omotayo@email.com",
+        "phone": "+2347012345678",
+        "account_age_days": 1024,
+        "daily_limit": 1000000
+      },
+      "fraud_signals": [],
+      "fraud_score": 5,
+      "reason": "Routine transfer within customer parameters. Long account history. Trusted beneficiary.",
+      "device": {
+        "device_id": "DEV-web-98765",
+        "type": "Desktop",
+        "location": "Home IP (Lagos)"
+      },
+      "beneficiary": {
+        "account": "3333444455556666",
+        "bank": "Diamond Bank",
+        "name": "Tayo Omotayo",
+        "is_frequent": true,
+        "relationship": "Family"
+      },
+      "time_of_day": "18:15 (typical evening time)",
+      "detection_time_ms": 19
+    },
+    {
+      "id": "TXN-2026-0009",
+      "timestamp": "2026-03-09T18:42:11Z",
+      "type": "TRANSFER",
+      "status": "BLOCKED",
+      "amount": 3500000,
+      "currency": "NGN",
+      "customer": {
+        "id": "CUST-45678",
+        "name": "Chidinma Adeyinka",
+        "email": "chidinma.a@email.com",
+        "phone": "+2348056789012",
+        "account_age_days": 92,
+        "daily_limit": 500000
+      },
+      "fraud_signals": [
+        "EXTREME_VELOCITY",
+        "MULTIPLE_FAILED_ATTEMPTS",
+        "SMISHING_DETECTED"
+      ],
+      "fraud_score": 99,
+      "reason": "7 failed login attempts in 5 minutes followed by successful login from unknown device. 3 transfer attempts to different accounts.",
+      "failed_attempts": {
+        "total_attempts": 7,
+        "time_span_minutes": 5,
+        "success_attempt": 8
+      },
+      "login_details": {
+        "previous_device": "Samsung Galaxy S21",
+        "current_device": "Unknown (likely spoofed)",
+        "previous_location": "Yaba, Lagos",
+        "current_location": "Unknown"
+      },
+      "transfer_attempts": {
+        "attempt_1": {"beneficiary": "Unknown", "amount": 2500000, "status": "FAILED"},
+        "attempt_2": {"beneficiary": "Unknown", "amount": 3000000, "status": "FAILED"},
+        "attempt_3": {"beneficiary": "Unknown", "amount": 3500000, "status": "BLOCKED"}
+      },
+      "detection_time_ms": 67
+    },
+    {
+      "id": "TXN-2026-0010",
+      "timestamp": "2026-03-09T19:09:34Z",
+      "type": "CARD_PURCHASE",
+      "status": "APPROVED",
+      "amount": 12500,
+      "currency": "NGN",
+      "customer": {
+        "id": "CUST-89012",
+        "name": "Yemisi Oluwasegun",
+        "email": "yemisi.o@email.com",
+        "phone": "+2349123456789",
+        "account_age_days": 756,
+        "daily_limit": 1000000
+      },
+      "fraud_signals": [],
+      "fraud_score": 1,
+      "reason": "Small routine purchase at known merchant. Customer's typical spending pattern.",
+      "merchant": {
+        "name": "Lekki Food Market",
+        "category": "GROCERY",
+        "location": "Lekki, Lagos",
+        "frequency": "DAILY"
+      },
+      "card_details": {
+        "card_type": "DEBIT",
+        "last_4": "2345",
+        "issuer": "Zenith Bank"
+      },
+      "behavioral_score": 99,
+      "detection_time_ms": 15
+    },
+    {
+      "id": "TXN-2026-0011",
+      "timestamp": "2026-03-09T19:36:47Z",
+      "type": "TRANSFER",
+      "status": "BLOCKED",
+      "amount": 750000,
+      "currency": "NGN",
+      "customer": {
+        "id": "CUST-56234",
+        "name": "Nonso Eze",
+        "email": "nonso.e@email.com",
+        "phone": "+2348089012345",
+        "account_age_days": 34,
+        "daily_limit": 250000
+      },
+      "fraud_signals": [
+        "NEW_ACCOUNT",
+        "HIGH_RISK_VELOCITY",
+        "DORMANT_THEN_ACTIVE"
+      ],
+      "fraud_score": 91,
+      "reason": "Account created 34 days ago. First 30 days dormant. Now attempting large transfer 3x daily limit.",
+      "account_activity": {
+        "days_dormant": 30,
+        "first_activity_date": "2026-02-04",
+        "first_large_transaction_date": "2026-03-09"
+      },
+      "beneficiary": {
+        "account": "7777888899990000",
+        "bank": "GTBank",
+        "name": "Premium Trading Company"
+      },
+      "detection_time_ms": 44
+    },
+    {
+      "id": "TXN-2026-0012",
+      "timestamp": "2026-03-09T20:03:15Z",
+      "type": "TRANSFER",
+      "status": "APPROVED",
+      "amount": 1500000,
+      "currency": "NGN",
+      "customer": {
+        "id": "CUST-23456",
+        "name": "Dr. Akinola Adeniyi",
+        "email": "dr.akinola@email.com",
+        "phone": "+2347098765432",
+        "account_age_days": 2048,
+        "daily_limit": 10000000
+      },
+      "fraud_signals": [],
+      "fraud_score": 3,
+      "reason": "High-value account holder. Legitimate business transfer. Consistent pattern.",
+      "customer_type": "PREMIUM_ACCOUNT",
+      "account_status": "HIGH_TRUST",
+      "beneficiary": {
+        "account": "1000111122223333",
+        "bank": "Access Bank",
+        "name": "Adeniyi Medical Center",
+        "is_frequent": true,
+        "relationship": "Business"
+      },
+      "detection_time_ms": 20
+    }
+  ],
+  "fraud_categories_detected": {
+    "SIM_SWAP": {
+      "count": 2,
+      "high_risk_indicators": ["Location change", "New device", "Failed logins"],
+      "avg_fraud_score": 97
+    },
+    "ACCOUNT_TAKEOVER": {
+      "count": 3,
+      "high_risk_indicators": ["Password reset", "New device", "Unusual time"],
+      "avg_fraud_score": 93
+    },
+    "SYNTHETIC_IDENTITY": {
+      "count": 1,
+      "high_risk_indicators": ["Multiple accounts", "Phone reuse", "Pattern matching"],
+      "avg_fraud_score": 87
+    },
+    "STRUCTURING": {
+      "count": 1,
+      "high_risk_indicators": ["Multiple withdrawals", "Round amounts", "Short intervals"],
+      "avg_fraud_score": 78
+    },
+    "VELOCITY_ATTACK": {
+      "count": 3,
+      "high_risk_indicators": ["Multiple attempts", "Rapid transactions", "New accounts"],
+      "avg_fraud_score": 89
+    },
+    "NEW_ACCOUNT_ABUSE": {
+      "count": 2,
+      "high_risk_indicators": ["Young account", "Dormant then active", "Large amounts"],
+      "avg_fraud_score": 91
+    },
+    "LEGITIMATE_TRANSACTIONS": {
+      "count": 4,
+      "characteristics": ["Consistent behavior", "Known beneficiaries", "Typical amounts"],
+      "avg_fraud_score": 3
+    }
+  },
+  "dashboard_metrics": {
+    "total_transactions_analyzed": 12,
+    "fraud_detected": 8,
+    "fraud_blocked": 7,
+    "fraud_flagged": 1,
+    "legitimate": 4,
+    "avg_detection_time_ms": 39,
+    "fraud_prevention_rate": "94%",
+    "false_positive_rate": "3%",
+    "amount_blocked_ngn": 8150000,
+    "amount_saved_ngn": 8150000
+  },
+  "nigerian_fintech_context": {
+    "top_fraud_vectors": [
+      "SIM card swap attacks (most common in Nigeria)",
+      "Account takeover via phishing/smishing",
+      "Velocity attacks on new accounts",
+      "Structuring to avoid AML detection",
+      "Synthetic identity fraud",
+      "Card cloning and POS fraud",
+      "Social engineering"
+    ],
+    "regulatory_context": {
+      "cbnt_requirements": "Real-time fraud monitoring",
+      "aml_thresholds": "Report transactions > 5M NGN",
+      "customer_authentication": "Multi-factor verification required"
+    },
+    "banks_using_nexus": [
+      "FirstBank",
+      "GTBank",
+      "Access Bank",
+      "Zenith Bank",
+      "UBA",
+      "Diamond Bank"
+    ]
+  }
+}
